@@ -1,0 +1,34 @@
+
+.navlink{
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    
+}
+/* .side-nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+} */
+
+
+.right-cont{
+    
+     display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+.right-cont > .btn{
+    width: 30%;
+}
+.form-cont{
+    width: 100%;
+}
+.inputSearch{
+    width: 100%;
+}
+.form-cont > .btn{
+    width: 100%;
+}

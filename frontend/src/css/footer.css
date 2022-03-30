@@ -1,0 +1,33 @@
+footer{
+    background: black;
+    
+    padding: 1em;
+    width: 100%;
+}
+footer > *{
+    color: white;
+}
+.logos {
+     display: flex;
+     flex-direction: row;
+     justify-content: center;
+}
+.icons{
+    margin: 10px;
+    align-self: center;
+}
+.footer-links{
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+.footer-links > a{
+    margin: 10px;
+   white-space: nowrap;
+   text-decoration: none;
+   color: white;
+    
+}
+.address-footer{
+    font-size: 15px;
+}
