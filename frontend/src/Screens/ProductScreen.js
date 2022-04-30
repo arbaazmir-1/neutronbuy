@@ -30,8 +30,10 @@ const ProductScreen = ({ match }) => {
       }
   }
   return (
-    <Container className="m-3">
-      <Link className="btn btn-light mb-2" to="/home">
+    <Container >
+      <Link className="btn btn-light my-2" to="/home">
+        <i className="fas fa-arrow-left"></i>
+        {" "}
         Back
       </Link>
       <Row>

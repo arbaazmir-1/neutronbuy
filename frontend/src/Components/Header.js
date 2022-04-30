@@ -4,9 +4,7 @@ import {
   Container,
   Nav,
   NavDropdown,
-  Button,
-  Form,
-  FormControl,
+  
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
@@ -25,6 +23,10 @@ const Header = () => {
             <Nav className="navlink ">
               <LinkContainer to="/catagories">
                 <Nav.Link>Catagories</Nav.Link>
+              </LinkContainer>
+
+              <LinkContainer to="/promotions">
+                <Nav.Link>Promotions</Nav.Link>
               </LinkContainer>
 
               <NavDropdown title="Brands" id="collasible-nav-dropdown">
