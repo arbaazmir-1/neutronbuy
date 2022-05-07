@@ -1,9 +1,15 @@
 footer{
-    background: black;
+    background: #212529;
     
-    padding: 1em;
+    padding: 2em;
     width: 100%;
 }
+
+.links {
+    color: white;
+    text-decoration: none;
+}
+
 footer > *{
     color: white;
 }
@@ -20,6 +26,12 @@ footer > *{
     display: flex;
     width: 100%;
     align-items: center;
+    
+}
+.social-links > i{
+    margin: 5px;
+    font-size: 25px;
+    margin-right: 20px;
 }
 .footer-links > a{
     margin: 10px;
@@ -30,4 +42,36 @@ footer > *{
 }
 .address-footer{
     font-size: 15px;
+} 
+.payment-partners-app-container{
+    margin: 4% auto;
+    text-align: center;
+    
+    
+}
+.payment-container > div > i{
+    font-size: 40px;
+    margin: 5px;
+}
+.app-container > button{
+    text-align: center;
+    margin: 5px;
+}
+.app-container > button > i{
+    font-size: 20px;
+}
+.partners-container > span{
+font-size: 40px;
+margin: 5px;
+}
+@media (max-width: 800px) {
+    .container-footer{
+        display: flex;
+        flex-direction: column;
+    }
+    .footer-links{
+        flex-direction: column;
+        margin: 10% 0% 10% 0%;
+        
+    }
 }

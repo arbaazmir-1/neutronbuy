@@ -63,6 +63,16 @@ const productSchema = Schema({
         required: true,
         default: 0
     },
+    promotions : {
+        isOnSale: {
+            type: Boolean,
+            default: false,
+        },
+        promoPrice: {
+            type: Number,
+            default: 0
+        }
+    }
 
 
 },{

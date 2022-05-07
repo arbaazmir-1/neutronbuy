@@ -5,6 +5,8 @@ import Header from "./Components/Header";
 import HomeScreen from "./Screens/HomeScreen";
 import ProductScreen from "./Screens/ProductScreen";
 import './css/bootstrap.min.css'
+import PromotionScreen from "./Screens/PromotionScreen";
+
 
 
 const App = ()=> {
@@ -15,8 +17,13 @@ const App = ()=> {
       <Header />
       <main className="p-3">
         <Routes>
-      <Route path="/home" element={<HomeScreen/>} exact/>
+          
+      <Route path="/" element={<HomeScreen/>} exact/>
       <Route path="/product/:id" element={<ProductScreen/>} />
+      
+      <Route path="/promotions" element={<PromotionScreen/>} exact/>
+      
+    
       </Routes>
         
       </main>

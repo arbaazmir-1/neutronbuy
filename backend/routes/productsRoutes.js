@@ -7,6 +7,8 @@ const asyncHandler = require('express-async-handler')
 
 router.get('/',asyncHandler( async (req,res)=>{
     const products = await Product.find();
+    // res.status(401)
+    // throw new Error('Unathorzied Personal')
     res.json(products)
 }))
 
@@ -21,4 +23,5 @@ router.get('/:id',asyncHandler( async(req,res)=>{
     }
     
 }))
+
 module.exports = router
