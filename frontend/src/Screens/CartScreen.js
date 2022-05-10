@@ -11,18 +11,20 @@ const CartScreen = () => {
     let {id} = useParams()
     const [searchParams, setSearchParams] = useSearchParams();
     const qty = searchParams.get("qty") 
-    
+   
     const dispatch = useDispatch()
     const cart = useSelector(state=> state.cart)
     const {cartItems} = cart
     useEffect(()=>{
         if(id){
             dispatch(addToCart(id,qty))
+            
         }
     },[dispatch,id,qty])
     const history= useNavigate()
     const removeItemHandler =(id)=>{
         dispatch(removeFromCart(id))
+        
     }
     const checkOutHandler= ()=>{
         
@@ -32,6 +34,7 @@ const CartScreen = () => {
        <button  className="btn btn-light my-2" onClick={() => history(-1)}>
       <i className="fas fa-arrow-left"></i> Back
       </button>
+      
     <Row>
         <Col md={8}>
         
@@ -96,7 +99,8 @@ const CartScreen = () => {
                                 <ListGroup variant='flush'>
                                     <ListGroup.Item>
                                     {/* ({cartItems.reduce((acc, item) => acc+ item.qty,0)}) */}
-                                        <h4>SubTotal </h4>
+                                    
+                                        <h4>SubTotal  </h4>
                                        Total: ${cartItems.reduce((acc,item)=>acc+ item.qty * item.price,0).toFixed(2)}
                                     </ListGroup.Item>
                                     <ListGroup.Item>
