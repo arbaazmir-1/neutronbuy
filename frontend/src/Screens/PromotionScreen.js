@@ -1,6 +1,6 @@
-import React,{useState,useEffect} from 'react'
+import React,{useEffect} from 'react'
 import Product from '../Components/Product'
-import {Row,Col,Image}  from 'react-bootstrap'
+import {Row,Col}  from 'react-bootstrap'
 import {useDispatch,useSelector} from 'react-redux'
 import { listProductPromotions } from '../actions/productActions'
 import Loader from '../Components/Loader'

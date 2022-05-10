@@ -47,7 +47,7 @@ const HomeScreen = () => {
         <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
         <p>
           {error}.{" "}
-          We are on it and the issue will be fixed sooon!!!
+          We are on it and the issue will be fixed soon!!!
         </p>
       </Alert>
           

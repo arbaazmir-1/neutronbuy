@@ -40,7 +40,7 @@ const Footer = () => {
         <Row className="container-footer text-center">
           <Col>
             <Row>
-              <h5 style={{color:"white"}}>anneutron.com</h5>
+              <h5 style={{color:"white"}}>neutron</h5>
             </Row>
             <p className="address-footer">
               1301 N Arthur Ashe <br />

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect ,useState} from "react";
 import {  useParams ,useNavigate} from "react-router-dom";
 import {
   Row,
@@ -8,6 +8,7 @@ import {
   Button,
   Container,
   ListGroupItem,
+  FormControl,
   
 } from "react-bootstrap";
 import Rating from "../Components/Rating";
@@ -15,7 +16,7 @@ import { useDispatch,useSelector } from "react-redux";
 import { listProductDetails } from "../actions/productActions";
 import Loader from "../Components/Loader";
 import Message from "../Components/Message";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -24,8 +25,8 @@ const ProductScreen = ({ match }) => {
   let { id } = useParams();
   const productDetails = useSelector(state =>state.productDetails)
   const {loading,product,error} = productDetails
-
   const history= useNavigate()
+  const[qty,setQty]= useState(1)
 
   useEffect(() => {
     dispatch(listProductDetails(id))
@@ -36,7 +37,9 @@ const ProductScreen = ({ match }) => {
       return true;
     }
   };
-  const addedToCart = () => toast('Added To Cart');
+  const addtoCartHandler=()=>{
+    history(`/cart/${id}?qty=${qty}`)
+  }
   
   return (
     <Container>
@@ -81,7 +84,12 @@ const ProductScreen = ({ match }) => {
              )
              
              
-             }
+             } {" "}
+             {lowStock() && (
+                <span className="badge rounded-pill bg-warning mb-2">
+                  Low In Stock, Only {product.countInStock} left
+                </span>
+              )}
               
               
               
@@ -89,13 +97,15 @@ const ProductScreen = ({ match }) => {
             </ListGroupItem>
             <ListGroupItem>
               <p> {product.description}</p>
-              <Rating
-                value={product.rating}
-                text={`${product.numReviews} reviews`}
-              />
+              <h6>Brand: {product.brand}</h6>
+              <h6>Category: {product.category}</h6>
+             
+              
             </ListGroupItem>
             <ListGroupItem>
-              {
+              
+            
+            {
                 product.promotions &&
                 product.promotions.isOnSale=== true ?
                 (
@@ -113,16 +123,33 @@ const ProductScreen = ({ match }) => {
                   </h6>
                 )
               }
-            
-           
+              
+               <Rating
+                value={product.rating}
+                text={`${product.numReviews} reviews`}
+              />
 
-              {lowStock() && (
-                <span className="badge rounded-pill bg-warning mb-2">
-                  Low In Stock
-                </span>
+              
+              {product.countInStock > 0 && (
+                
+                  <Row className="mt-2 mb-2">
+                    
+                    <Col>
+                     <h6>Select Quantity</h6>
+                    <FormControl as='select' value={qty} onChange={(e)=> setQty(e.target.value)}>
+                      {
+                    [...Array(product.countInStock).keys()].map((x) => (
+                      <option key={x+1} value={x+1}>
+                        {x+1}
+                      </option>
+                    ))}
+                    </FormControl>
+                    </Col>
+                  </Row>
+                
               )}
               <div>
-                <Button disabled={product.countInStock === 0} className="m-1" onClick={addedToCart}>
+                <Button disabled={product.countInStock === 0} className="m-1" onClick={addtoCartHandler}>
                   Add To Cart
                 </Button>
                 <Button disabled={product.countInStock === 0} variant="success">

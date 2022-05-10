@@ -16,12 +16,14 @@ const Product = (props) => {
         <Card.Body>
           <Link to={`/product/${product._id}`} style={{textDecoration:"none",color:"black"}}>
             <Card.Title as='div'><strong>{product.name}</strong>{" "}
-            {product.countInStock<=0 &&
+            {product.countInStock===0 &&
                     
                     <span className="badge rounded-pill bg-danger mb-2">Out Of Stock</span>
         }{" "}
-        {product.promotions.isOnSale===true &&
-        <span className="badge rounded-pill bg-primary mb-2">On Sale</span>}
+        {product.countInStock!==0 &&
+        product.promotions.isOnSale===true &&
+        <span className="badge rounded-pill bg-primary mb-2">On Sale</span>
+        }
             </Card.Title>
           </Link>
           {product.promotions.isOnSale===false ?

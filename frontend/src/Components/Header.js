@@ -2,15 +2,25 @@ import React from "react";
 import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
+import { useSelector } from "react-redux";
 
 import "../css/header.css";
 const Header = () => {
+  const cart = useSelector(state=> state.cart)
+  const {cartItems} = cart
+  let ItemsInCart = 0
+  if(cartItems){
+    ItemsInCart= cartItems.length
+  }
+  else{
+    ItemsInCart =0
+  }
   return (
     <header>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" fixed="top">
         <Container className="nav-cont ">
           <Link to={"/"} style={{ textDecoration: "none" }}>
-            <Navbar.Brand>anneutron</Navbar.Brand>
+            <Navbar.Brand>neutron</Navbar.Brand>
           </Link>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
@@ -19,9 +29,9 @@ const Header = () => {
                 <Nav.Link>Home</Nav.Link>
               </LinkContainer>
               <NavDropdown title="Category" id="basic-nav-dropdown">
-          <NavDropdown.Item href="#action/3.1">Men</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.2">Women</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.3">Accessories</NavDropdown.Item>
+          <NavDropdown.Item href="/category/men">Men</NavDropdown.Item>
+          <NavDropdown.Item href="/category/Women">Women</NavDropdown.Item>
+          <NavDropdown.Item href="/category/accessories">Accessories</NavDropdown.Item>
           
           
         </NavDropdown>
@@ -56,13 +66,13 @@ const Header = () => {
               <LinkContainer to="/cart">
                 <Nav.Link>
                   {" "}
-                  <i className="fas fa-cart-shopping"></i> Cart
+                  <i className="fa fa-shopping-cart"></i> {ItemsInCart>0 && (<sup>{ItemsInCart}</sup>)}
                 </Nav.Link>
               </LinkContainer>
               <LinkContainer to="/login">
                 <Nav.Link> Login </Nav.Link>
               </LinkContainer>
-              <LinkContainer to="/signin">
+              <LinkContainer to="/signup">
                 <Nav.Link> Sign In </Nav.Link>
               </LinkContainer>
             </Nav>
